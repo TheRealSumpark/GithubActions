@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+    database:
+        container_name: app-db
+        build: ./Database
+        networks:
+            - app-network
+
+    backend:
+        container_name: app-backend-api
+        build: ./BackEnd/BackEndApi
+        restart: "on-failure"
+        depends_on:
+        - database
+        networks:
+            - app-network
+
+    httpd:
+        container_name: app-front
+        build: ./Front
+        ports:
+        - "80:80"
+        depends_on:
+        - backend
+        networks:
+            - app-network
+
+networks:
+    app-network:
