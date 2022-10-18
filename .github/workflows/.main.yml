@@ -50,16 +50,16 @@ jobs:
 
     - name: Build image and push database
         with:
-        # relative path to the place where source code with Dockerfile is located
-        context: ./Database
-        # Note: tags has to be all lower-case
-        tags:  ${{secrets.Username}}/tp-devops-epf/database
-        push: ${{ github.ref == 'refs/heads/main }}
+          # relative path to the place where source code with Dockerfile is located
+          context: ./Database
+          # Note: tags has to be all lower-case
+          tags:  ${{secrets.Username}}/tp-devops-epf/database
+          push: ${{ github.ref == 'refs/heads/main }}
 
     - name: Build image and push httpd
       with:
-        # relative path to the place where source code with Dockerfile is located
-        context: ./Front
-        # Note: tags has to be all lower-case
-        tags:  ${{secrets.Username}}/tp-devops-epf/front
-        push: ${{ github.ref == 'refs/heads/main }}
+          # relative path to the place where source code with Dockerfile is located
+          context: ./Front
+          # Note: tags has to be all lower-case
+          tags:  ${{secrets.Username}}/tp-devops-epf/front
+          push: ${{ github.ref == 'refs/heads/main }}
