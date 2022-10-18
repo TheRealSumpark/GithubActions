@@ -20,5 +20,5 @@ jobs:
           java-version: "11"
       #finally build your app with the latest command
       - name: Build and test with Maven
-        working-directory: BackEnd/BackendApi/
+        working-directory: BackEnd/BackendApi/simple-api/
         run: mvn clean verify
