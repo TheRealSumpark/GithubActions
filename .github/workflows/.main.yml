@@ -40,7 +40,7 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./BackEnd
           # Note: tags has to be all lower-case
-          name: ${{secrets.USERNAME}}/tp-devops-epf/backend
+          name: ${{secrets.USERNAME}}/tp-devops-epf:backend
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: v1
 
@@ -50,7 +50,7 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./Database
           # Note: tags has to be all lower-case
-          name: ${{ secrets.USERNAME }}/tp-devops-epf/database
+          name: ${{ secrets.USERNAME }}/tp-devops-epf:database
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: v1
 
@@ -60,6 +60,6 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./Front
           # Note: tags has to be all lower-case
-          name: ${{ secrets.USERNAME }}/tp-devops-epf/front
+          name: ${{ secrets.USERNAME }}/tp-devops-epf:front
           tags: v1
           push: ${{ github.ref == 'refs/heads/main' }}
