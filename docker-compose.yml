@@ -9,10 +9,10 @@ services:
 
     backend:
         container_name: app-backend-api
-        build: ./BackEnd/BackEndApi
+        build: ./Backend
         restart: "on-failure"
         depends_on:
-        - database
+            - database
         networks:
             - app-network
 
@@ -20,9 +20,9 @@ services:
         container_name: app-front
         build: ./Front
         ports:
-        - "80:80"
+            - "80:80"
         depends_on:
-        - backend
+            - backend
         networks:
             - app-network
 
