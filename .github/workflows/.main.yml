@@ -40,7 +40,7 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./BackEnd
           # Note: tags has to be all lower-case
-          tags: ${{secrets.USERNAME}}/tp-devops-epf/backend
+          name: ${{secrets.USERNAME}}/tp-devops-epf/backend
           push: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Build image and push database
