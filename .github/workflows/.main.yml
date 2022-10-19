@@ -34,13 +34,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Build image and push backend
         uses: docker/build-push-action@v2
         with:
           # relative path to the place where source code with Dockerfile is located
           context: ./BackEnd
           # Note: tags has to be all lower-case
-          name: ${{secrets.USERNAME}}/tp-devops-epf:backend
+          name: ${{secrets.DOCKERHUB_USERNAME}}/tp-devops-epf:backend
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: v1
 
@@ -50,7 +56,7 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./Database
           # Note: tags has to be all lower-case
-          name: ${{ secrets.USERNAME }}/tp-devops-epf:database
+          name: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-epf:database
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: v1
 
@@ -60,6 +66,6 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./Front
           # Note: tags has to be all lower-case
-          name: ${{ secrets.USERNAME }}/tp-devops-epf:front
+          name: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-epf:front
           tags: v1
           push: ${{ github.ref == 'refs/heads/main' }}
