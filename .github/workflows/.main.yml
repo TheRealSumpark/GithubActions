@@ -43,8 +43,9 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./BackEnd
           # Note: tags has to be all lower-case
-          name: ${{secrets.DOCKER_HUB_USERNAME}}/tp-devops-epf:backend
+          name: ${{secrets.DOCKER_HUB_USERNAME}}/tp-devops-epf
           push: ${{ github.ref == 'refs/heads/main' }}
+          tags: backend
 
       - name: Build image and push database
         uses: docker/build-push-action@v2
@@ -52,8 +53,9 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./Database
           # Note: tags has to be all lower-case
-          name: ${{ secrets.DOCKER_HUB_USERNAME }}/tp-devops-epf:database
+          name: ${{ secrets.DOCKER_HUB_USERNAME }}/tp-devops-epf
           push: ${{ github.ref == 'refs/heads/main' }}
+          tags: database
 
       - name: Build image and push httpd
         uses: docker/build-push-action@v2
@@ -61,5 +63,6 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./Front
           # Note: tags has to be all lower-case
-          name: ${{ secrets.DOCKER_HUB_USERNAME }}/tp-devops-epf:front
+          name: ${{ secrets.DOCKER_HUB_USERNAME }}/tp-devops-epf
           push: ${{ github.ref == 'refs/heads/main' }}
+          tags: front
