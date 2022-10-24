@@ -9,7 +9,7 @@ services:
 
     backend:
         container_name: app-backend-api
-        build: ./Backend
+        build: ./BackEnd
         restart: "on-failure"
         depends_on:
             - database
