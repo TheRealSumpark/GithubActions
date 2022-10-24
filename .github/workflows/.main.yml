@@ -29,7 +29,7 @@ jobs:
           context: ./BackEnd
           repository: sumpark/tp-devops-epf
           # Note: tags has to be all lower-case
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/backend
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/tp-devops-epf/backend
           push: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Build image and push database
