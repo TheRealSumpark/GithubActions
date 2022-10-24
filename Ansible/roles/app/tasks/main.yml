@@ -1,0 +1,8 @@
+- name: Run backend
+  docker_container:
+    name: app-backend-api
+    image: sumpark/tp-devops-epf:backend
+    pull: true
+    recreate: true
+    networks:
+      - name: "app-network"

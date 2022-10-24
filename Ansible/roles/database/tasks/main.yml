@@ -1,0 +1,8 @@
+- name: Run database
+  docker_container:
+    name: app-db
+    image: sumpark/tp-devops-epf:database
+    pull: true
+    recreate: true
+    networks:
+      - name: "app-network"

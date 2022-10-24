@@ -41,3 +41,10 @@
     - name: Make sure Docker is running
       service: name=docker state=started
       tags: docker
+
+  roles:
+    - network
+    - database
+    - app
+    - docker
+    - proxy
