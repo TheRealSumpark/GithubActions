@@ -24,22 +24,19 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           # relative path to the place where source code with Dockerfile is located
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB.TOKEN }}
           context: ./BackEnd
-          file: ./BackEnd/Dockerfile
           repository: sumpark/tp-devops-epf
           # Note: tags has to be all lower-case
-          name: ${{secrets.DOCKER_HUB_USERNAME}}/tp-devops-epf/backend
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/tp-devops-epf/backend
           push: ${{ github.ref == 'refs/heads/main' }}
-          tags: v1
-          username: ${{secrets.DOCKER_HUB_USERNAME}}
-          password: ${{secrets.DOCKER_HUB.TOKEN}}
 
       - name: Build image and push database
         uses: docker/build-push-action@v3
         with:
           context: ./Database
           # relative path to the place where source code with Dockerfile is located
-          file: ./Database/Dockerfile
           # Note: tags has to be all lower-case
           name: ${{ secrets.DOCKER_HUB_USERNAME }}/tp-devops-epf/database
           push: ${{ github.ref == 'refs/heads/main' }}
@@ -50,7 +47,6 @@ jobs:
         with:
           # relative path to the place where source code with Dockerfile is located
           context: ./Front
-          file: ./Front/Dockerfile
           # Note: tags has to be all lower-case
           name: ${{ secrets.DOCKER_HUB_USERNAME }}/tp-devops-epf/front
           tags: v1
