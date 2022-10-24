@@ -27,9 +27,9 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB.TOKEN }}
           context: ./BackEnd
-          repository: ${{secrets.DOCKER_HUB_USERNAME}}/tp-devops-epf
+          tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-devops-epf:backend
           # Note: tags has to be all lower-case
-          tags: backend
+
           push: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Build image and push database
@@ -49,5 +49,5 @@ jobs:
           context: ./Front
           # Note: tags has to be all lower-case
           repository: ${{ secrets.DOCKER_HUB_USERNAME }}/tp-devops-epf
-          tags: front
+          tags: v1
           push: ${{ github.ref == 'refs/heads/main' }}
