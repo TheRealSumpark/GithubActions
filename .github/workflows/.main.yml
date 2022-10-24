@@ -27,7 +27,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB.TOKEN }}
           context: ./BackEnd
-          repository: sumpark/tp-devops-epf
+
           # Note: tags has to be all lower-case
           tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-devops-epf/backend
           push: ${{ github.ref == 'refs/heads/main' }}
