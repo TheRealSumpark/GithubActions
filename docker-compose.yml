@@ -19,6 +19,14 @@ services:
     httpd:
         container_name: app-front
         build: ./Front
+        depends_on:
+            - backend
+        networks:
+            - app-network
+    
+    proxy:
+        container_name: app-proxy
+        build: ./Proxy
         ports:
             - "80:80"
         depends_on:
